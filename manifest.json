@@ -5,13 +5,7 @@
     "version": "1.0.0",
     "description": "Forces the Zoom to be set to 100%",
     "homepage_url": "https://github.com/acarrabbav/zoom100",
-    "icons": {
-        "16": "focus_24dp.svg"
-    },
     "browser_action": {
-        "default_icon": {
-            "16": "focus_24dp.svg"
-        },
         "default_title": "zoom100"
     },
     "background": {
