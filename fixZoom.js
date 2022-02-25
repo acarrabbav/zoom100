@@ -1,16 +1,28 @@
-'use strict';
-(chrome => {
-    const ZOOM_FACTOR = 1;
+function updateZoom(tabId) {
+    chrome.tabs.setZoomSettings(
+        tabId, { mode: "disabled", scope: "per-tab" },
+        _ => console.log(chrome.runtime.lastError)
+    );
 
-    function setTo100(tabId) {
-        chrome.tabs.setZoomSettings(
-            tabId, { mode: "automatic", scope: "per-tab" },
-            () => chrome.tabs.setZoom(tabId, ZOOM_FACTOR)
-        );
-    }
-    chrome.tabs.onZoomChange.addListener(
-        (zoomInfo) => {
-            if (zoomInfo.newZoomFactor != ZOOM_FACTOR) setTo100(zoomInfo.tabId)
-        }
-    )
-})(window.chrome)
+    chrome.tabs.getZoom(tabId, (zoomFactor) => {
+        chrome.scripting.executeScript({
+            target: { tabId: tabId },
+            func: (zoomFactor) => {
+                const newZoomLevel = 1 / +zoomFactor;
+                console.log(document.body);
+                document.body.style.zoom = newZoomLevel;
+            },
+            args: ["" + zoomFactor]
+        }, _ => console.log(chrome.runtime.lastError));
+    });
+}
+
+chrome.tabs.onUpdated.addListener((tabId) => {
+    console.log("UPDATED");
+    updateZoom(tabId);
+});
+
+chrome.tabs.onZoomChange.addListener((zoomInfo) => {
+    console.log("ZOOM CHANGE");
+    updateZoom(zoomInfo.tabId);
+});
