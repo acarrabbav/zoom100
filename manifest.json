@@ -12,8 +12,9 @@
     "permissions": [
         "scripting",
         "tabs",
-        "activeTab",
+        "activeTab"
+    ],
+    "host_permissions": [
         "*://*/*"
-
     ]
 }

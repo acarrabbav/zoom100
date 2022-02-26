@@ -9,7 +9,6 @@ function updateZoom(tabId) {
             target: { tabId: tabId },
             func: (zoomFactor) => {
                 const newZoomLevel = 1 / +zoomFactor;
-                console.log(document.body);
                 document.body.style.zoom = newZoomLevel;
             },
             args: ["" + zoomFactor]
@@ -18,11 +17,9 @@ function updateZoom(tabId) {
 }
 
 chrome.tabs.onUpdated.addListener((tabId) => {
-    console.log("UPDATED");
     updateZoom(tabId);
 });
 
 chrome.tabs.onZoomChange.addListener((zoomInfo) => {
-    console.log("ZOOM CHANGE");
     updateZoom(zoomInfo.tabId);
 });
