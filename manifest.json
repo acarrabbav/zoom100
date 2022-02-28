@@ -10,8 +10,7 @@
     },
     "icons": { "128": "128.png" },
     "permissions": [
-        "scripting",
-        "activeTab"
+        "scripting"
     ],
     "host_permissions": [
         "*://*/*"
