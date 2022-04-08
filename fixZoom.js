@@ -5,8 +5,8 @@ function updateZoom(tabId) {
     );
 
     chrome.tabs.getZoom(tabId, (zoomFactor) => {
-        if (zoomFactor !== 1) {
-            chrome.tabs.setZoom(tabId, 1, () => {});
+        if (zoomFactor !== .8) {
+            chrome.tabs.setZoom(tabId, .8, () => {});
         }
     });
 }

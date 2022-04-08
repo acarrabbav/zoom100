@@ -1,9 +1,9 @@
 {
     "manifest_version": 3,
     "author": "Angelo Carrabba",
-    "name": "zoom100",
-    "version": "2.0.1",
-    "description": "Forces the Zoom to be set to 100%",
+    "name": "zoom80",
+    "version": "3.0.0",
+    "description": "Forces the Zoom to be set to 80%",
     "homepage_url": "https://github.com/acarrabbav/zoom100",
     "background": {
         "service_worker": "fixZoom.js"
